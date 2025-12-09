@@ -26,7 +26,7 @@ It comes with a Free tier suitable for **experienced IT professionals to test ou
 
 The Free tier offers:
 - One user seat (per instance)
-- Noto Web App (your hosted Noto.com/app)
+- Noto Web App (your hosted noto.space/)
 - Up to 3 guest editors who can be added to your selected Noto pages and collaborate with you in real time
 - Publish pages
 - Unlimited workspaces
@@ -40,6 +40,6 @@ As part of the transition, we are consolidating and reorganizing our codebases i
 Recently, we merged all Noto Web–related development from our private repository back into the public one.
 
 Noto Cloud will continue to follow the open-core model for business reasons.
-You're free to use https://github.com/noto-space/noto-cloud governed by its license.
+You're free to use https://github.com/notospace/ governed by its license.
 
 
