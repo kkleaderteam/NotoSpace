@@ -1,0 +1,49 @@
+[package]
+name = "notospace-ai-client"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { workspace = true, features = [
+  "json",
+  "rustls-tls",
+  "cookies",
+  "stream",
+], optional = true }
+serde = { version = "1.0.199", features = ["derive"], optional = true }
+serde_json = { version = "1.0", optional = true }
+thiserror = "1.0.58"
+anyhow.workspace = true
+tracing = { version = "0.1", optional = true }
+serde_repr = { version = "0.1", optional = true }
+futures = "0.3.30"
+bytes.workspace = true
+ureq = { version = "2.12.1", optional = true, features = ["json"] }
+uuid = { workspace = true, features = ["serde"] }
+
+[dev-dependencies]
+notospace-ai-client = { path = ".", features = ["dto", "client-api"] }
+tokio = { version = "1.37.0", features = ["macros", "test-util"] }
+tracing-subscriber = { version = "0.3.18", features = [
+  "registry",
+  "env-filter",
+  "ansi",
+  "json",
+] }
+uuid = { workspace = true, features = ["v4"] }
+infra.workspace = true
+
+[features]
+default = ["client-api"]
+client-api = [
+  "dto",
+  "reqwest",
+  "serde",
+  "serde_json",
+  "tracing",
+  "serde_repr",
+  "infra/request_util", "ureq"
+]
+dto = ["serde", "serde_json", "serde_repr"]

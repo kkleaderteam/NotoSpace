@@ -1,0 +1,45 @@
+[package]
+name = "database"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+collab = { workspace = true }
+collab-entity = { workspace = true }
+database-entity.workspace = true
+shared-entity.workspace = true
+app-error = { workspace = true, features = ["sqlx_error", "validation_error"] }
+
+tokio = { workspace = true, features = ["sync"] }
+async-trait.workspace = true
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tonic-proto.workspace = true
+notospace-proto = { workspace = true }
+
+sqlx = { workspace = true, default-features = false, features = [
+  "postgres",
+  "chrono",
+  "uuid",
+  "macros",
+  "runtime-tokio-rustls",
+  "rust_decimal",
+] }
+pgvector = { workspace = true, features = ["sqlx"] }
+tracing = { version = "0.1.40" }
+uuid = { workspace = true, features = ["serde", "v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+futures-util = "0.3.30"
+aws-sdk-s3 = { version = "1.88.0", features = [
+  "behavior-version-latest",
+  "rt-tokio",
+], optional = true }
+rust_decimal = "1.36.0"
+itertools = "0.12.1"
+
+[features]
+default = ["s3"]
+s3 = ["aws-sdk-s3"]

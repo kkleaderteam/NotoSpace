@@ -1,0 +1,149 @@
+:root {
+  --af-background: #1a202c;
+  --line-divider: #384967;
+  --af-purple: #9327ff;
+  --af-dark-purple: #8427e0;
+  --af-red: #fb006d;
+  --af-dark-red: #e3006d;
+  --af-cyan: #00c8ff;
+  --af-dark-cyan: #00b5ff;
+  --af-yellow: #ffce00;
+  --af-dark-yellow: #ffbd00;
+  --af-darker-yellow: #f7931e;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--af-background);
+  color: #e2e9f2;
+}
+
+.button {
+  border: none;
+  border-radius: 4px;
+  margin: 4px;
+  padding: 4px 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.table {
+    border-collapse: collapse; /* Collapse borders so there's no double borders */
+}
+
+.table th, .table td {
+  padding: 8px;
+}
+
+.yellow-table th {
+  border: 1px solid var(--af-dark-yellow);
+  background-color: var(--af-yellow);
+}
+
+.yellow-table td {
+  border: 1px solid var(--af-dark-yellow);
+}
+
+.red-table th {
+  border: 1px solid var(--af-dark-red);
+  background-color: var(--af-red);
+}
+
+.red-table td {
+  border: 1px solid var(--af-dark-red);
+}
+
+.cyan-table th {
+  border: 1px solid var(--af-dark-cyan);
+  background-color: var(--af-cyan);
+}
+
+.cyan-table td {
+  border: 1px solid var(--af-dark-cyan);
+}
+
+.purple-table th {
+  border: 1px solid var(--af-dark-purple);
+  background-color: var(--af-purple);
+}
+
+.purple-table td {
+  border: 1px solid var(--af-dark-purple);
+}
+
+.purple:hover {
+  background-color: var(--af-dark-purple);
+}
+
+.purple {
+  background-color: var(--af-dark-purple);
+}
+
+.purple:hover {
+  background-color: var(--af-purple);
+}
+
+.red {
+  background-color: var(--af-dark-red);
+}
+
+.red:hover {
+  background-color: var(--af-red);
+}
+
+.cyan {
+  background-color: var(--af-dark-cyan);
+}
+
+.cyan:hover {
+  background-color: var(--af-cyan);
+}
+
+.yellow {
+  background-color: var(--af-darker-yellow);
+}
+
+.yellow:hover {
+  background-color: var(--af-yellow);
+}
+
+.input {
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid var(--line-divider);
+  margin: 4px 0;
+  padding: 4px 8px;
+  font-size: 16px;
+  color: inherit;
+  background-color: inherit;
+  outline: none;
+}
+
+.input:hover {
+  border-color: var(--af-dark-cyan);
+}
+
+.input:focus {
+  border-color: var(--af-cyan);
+}
+
+.loading-button {
+  filter: brightness(0.7);
+}
+
+.oauth-item-inner {
+  border: 1px solid;
+  border-color: var(--line-divider);
+  width: 100%;
+  margin: 4px;
+  border-radius: 8px;
+}
+
+.oauth-item-inner:hover {
+  border-color: var(--af-dark-cyan);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--line-divider);
+}

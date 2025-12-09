@@ -1,0 +1,32 @@
+[package]
+name = "collab-rt-entity"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+collab = { workspace = true }
+collab-entity = { workspace = true }
+serde.workspace = true
+bytes = { version = "1.5", features = ["serde"] }
+anyhow.workspace = true
+actix = { version = "0.13", optional = true }
+bincode.workspace = true
+tokio-tungstenite = { version = "0.20.1", optional = true }
+prost.workspace = true
+database-entity.workspace = true
+yrs.workspace = true
+collab-rt-protocol.workspace = true
+serde_repr = "0.1"
+chrono = "0.4"
+
+[build-dependencies]
+protoc-bin-vendored = { version = "3.0" }
+prost-build = "0.12.3"
+
+[features]
+actix_message = ["actix"]
+tungstenite = ["tokio-tungstenite"]

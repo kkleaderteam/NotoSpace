@@ -1,0 +1,36 @@
+[package]
+name = "indexer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rayon.workspace = true
+tiktoken-rs = "0.6.0"
+app-error = { workspace = true }
+notospace-ai-client = { workspace = true, features = ["client-api"] }
+collab = { workspace = true }
+collab-entity = { workspace = true }
+collab-document = { workspace = true }
+database-entity.workspace = true
+database.workspace = true
+futures-util.workspace = true
+sqlx.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+thiserror = "1.0.56"
+uuid.workspace = true
+async-trait.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+infra = { workspace = true }
+prometheus-client = "0.22.3"
+chrono = "0.4.39"
+serde.workspace = true
+redis = { workspace = true, features = [
+  "aio",
+  "tokio-comp",
+  "connection-manager",
+] }
+twox-hash = { version = "2.1.0", features = ["xxhash64"] }
+text-splitter = { version = "0.25.1" }
+async-openai.workspace = true

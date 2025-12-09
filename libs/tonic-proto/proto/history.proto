@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+// For optional string support
+package history;
+
+// SnapshotMetaPB represents metadata for a snapshot.
+message SnapshotMetaPb {
+    // The unique identifier for the snapshot.
+    string oid = 1;
+    // The raw binary snapshot data.
+    bytes snapshot = 2;
+    // The version of the snapshot format.
+    // If the version is 1, then use a specific method to decode the snapshot.
+    // If the version is 2, then use a different method to decode the snapshot.
+    int32 snapshot_version = 3;
+    // The creation timestamp of the snapshot.
+    int64 created_at = 4;
+}
+
+message SingleSnapshotInfoPb {
+    HistoryStatePb history_state = 1;
+    SnapshotMetaPb snapshot_meta = 2;
+}
+
+message HistoryStatePb {
+    string object_id = 1;                  // Unique identifier for the object
+    bytes doc_state = 2;                   // The document state as raw binary data
+    int32 doc_state_version = 3;           // Version of the document state format, with decoding instructions based on version
+}

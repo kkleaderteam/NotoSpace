@@ -1,0 +1,20 @@
+[package]
+name = "gotrue"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+reqwest = { workspace = true, features = ["json", "rustls-tls", "cookies"] }
+infra = { path = "../infra", features = ["request_util"] }
+gotrue-entity = { path = "../gotrue-entity" }
+tracing = "0.1"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.2", features = ["js"] }

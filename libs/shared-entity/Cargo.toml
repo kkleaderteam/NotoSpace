@@ -1,0 +1,38 @@
+[package]
+name = "shared-entity"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+anyhow.workspace = true
+serde = "1.0"
+serde_json.workspace = true
+serde_repr = "0.1.18"
+thiserror = "1.0.56"
+reqwest = { workspace = true, features = ["stream"] }
+uuid = { version = "1.6.1", features = ["v4"] }
+gotrue-entity = { path = "../gotrue-entity" }
+database-entity.workspace = true
+infra = { workspace = true, features = ["request_util"] }
+collab-entity = { workspace = true }
+app-error = { workspace = true }
+chrono = "0.4.31"
+notospace-ai-client = { workspace = true, default-features = false, features = [
+  "dto",
+] }
+pin-project = "1.1.5"
+
+actix-web = { version = "4.4.1", default-features = false, features = [
+  "http2",
+], optional = true }
+validator = { workspace = true, features = ["validator_derive", "derive"] }
+futures = "0.3.30"
+bytes.workspace = true
+
+
+[features]
+cloud = ["actix-web"]

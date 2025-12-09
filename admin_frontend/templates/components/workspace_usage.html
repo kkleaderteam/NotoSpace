@@ -1,0 +1,20 @@
+<div>
+  <table class="red-table table">
+    <thead>
+      <tr>
+        <th>Workspace Name</th>
+        <th>Members</th>
+        <th>Document Storage</th>
+        <th>Object Storage</th>
+      </tr>
+    </thead>
+
+    {% for workspace_usage in workspace_usages %}
+      <tr>
+        <td> {{ workspace_usage.name|escape }} </td>
+        <td> {{ workspace_usage.member_count|escape }} </td>
+        <td> {{ workspace_usage.total_doc_size|escape }} </td>
+        <td> {{ workspace_usage.total_blob_size|escape }} </td>
+      </tr>
+    {% endfor %}
+</div>

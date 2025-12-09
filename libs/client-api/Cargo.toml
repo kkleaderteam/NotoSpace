@@ -1,0 +1,96 @@
+[package]
+name = "client-api"
+version = "0.2.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+reqwest = { workspace = true, features = ["multipart"] }
+anyhow.workspace = true
+gotrue = { path = "../gotrue" }
+tracing = { version = "0.1" }
+thiserror = "1.0.56"
+bytes = "1.9.0"
+uuid.workspace = true
+futures-util = "0.3.30"
+futures-core = "0.3.30"
+parking_lot = "0.12.1"
+brotli = { version = "3.4.0", optional = true }
+async-trait.workspace = true
+prost = "0.13.3"
+url = "2.5.0"
+mime = "0.3.17"
+tokio = { workspace = true, features = ["sync", "macros"] }
+tokio-stream = { version = "0.1.14" }
+chrono = "0.4"
+client-websocket = { workspace = true, features = ["native-tls"] }
+semver = "1.0.22"
+zstd = { version = "0.13.2" }
+
+collab = { workspace = true }
+yrs = { workspace = true }
+collab-rt-protocol = { workspace = true }
+workspace-template = { workspace = true, optional = true }
+serde_json.workspace = true
+serde.workspace = true
+app-error = { workspace = true, features = ["tokio_error", "bincode_error"] }
+scraper = { version = "0.17.1", optional = true }
+arc-swap.workspace = true
+
+shared-entity = { workspace = true }
+collab-rt-entity = { workspace = true }
+client-api-entity.workspace = true
+serde_urlencoded = "0.7.1"
+futures.workspace = true
+pin-project.workspace = true
+percent-encoding = "2.3.1"
+lazy_static = { workspace = true }
+mime_guess = "2.0.5"
+notospace-proto = { path = "../notospace-proto" }
+dashmap.workspace = true
+tokio-tungstenite = { workspace = true, features = ["stream"] }
+rand = "0.8.5"
+smallvec = { workspace = true, features = [
+  "serde",
+  "const_generics",
+  "const_new",
+  "write",
+] }
+collab-plugins = { workspace = true, features = [] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "time", "rt"] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+tokio-retry = "0.3"
+tokio-util = "0.7"
+rayon = "1.10.0"
+infra = { workspace = true, features = ["file_util"] }
+base64 = "0.22"
+md5 = "0.7"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies.tokio]
+workspace = true
+features = ["sync", "net"]
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies.collab-rt-entity]
+workspace = true
+features = ["tungstenite"]
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen-futures = "0.4.40"
+getrandom = { version = "0.2", features = ["js"] }
+tokio = { workspace = true, features = ["sync"] }
+again = { version = "0.1.2" }
+
+[features]
+default = ["verbose_log"]
+test_util = ["scraper"]
+template = ["workspace-template"]
+sync_verbose_log = ["collab-rt-protocol/verbose_log"]
+test_fast_sync = []
+enable_brotli = ["brotli"]
+verbose_log = []

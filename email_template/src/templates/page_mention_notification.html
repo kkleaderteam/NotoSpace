@@ -1,0 +1,189 @@
+---
+bodyClass: bg-[#EEEEFC]
+---
+
+<x-main>
+  <div class="bg-[#EEEEFC] font-helvetica px-4 py-12 text-black">
+    <table align="center">
+      <tr>
+        <td
+          class="w-[600px] max-w-full bg-white rounded-2xl px-16 py-12 shadow-lg"
+        >
+          <p class="w-full text-center mb-6">
+            <img
+              src="{{ mentionerIconUrl }}"
+              class="rounded-full"
+              width="64"
+              height="64"
+              alt="Noto"
+            />
+          </p>
+
+          <p class="w-full text-center text-[32px] mb-8">
+            <span class="text-3xl font-bold">{{ mentionerName }}</span>
+            <span class="mx-2=1">has mentioned you in </span>
+            <span class="text-3xl font-bold">{{ mentionedPageName }}</span>
+          </p>
+
+          <p
+            class="w-full text-center text-[16px]"
+            style="color: var(--Text-secondary, #6f748c)"
+          >
+            {{ mentionedAt }}
+          </p>
+          <p
+            class="w-full text-center text-[16px] mb-8"
+            style="color: var(--Text-secondary, #6f748c)"
+          >
+            {{ workspaceName }} / ... / {{ mentionedPageName }}
+          </p>
+
+          <div class="text-center mb-8">
+            <x-button
+              align="center"
+              target="_blank"
+              class="hover:opacity-90 cursor-pointer !text-base !leading-[20px] !bg-[#9327FF] rounded-lg inline-block"
+              style="padding: 12px 36px; font-weight: 500"
+              href="{{ launchWorkspaceUrl }}"
+            >
+              Go to page
+            </x-button>
+          </div>
+
+          <!-- Divider -->
+          <hr class="border-t border-gray-100 my-8" style="opacity: 0.4" />
+
+          <!-- Footer content inside body -->
+          <div class="text-center">
+            <p
+              class="text-sm m-0 mb-6"
+              style="color: var(--Text-secondary, #6f748c)"
+            >
+              Bring projects, knowledge, and teams together with the power of
+              AI.
+            </p>
+
+            <p class="m-0 mb-4">
+              <a
+                href="https://discord.gg/9Q2xaN37tV"
+                class="[text-decoration:none] mx-2"
+              >
+                <img
+                  src="{{ cdnBaseUrl }}images/discord.png"
+                  width="24"
+                  height="24"
+                  alt="Discord"
+                />
+              </a>
+              <a
+                href=" https://github.com/Noto-IO/Noto"
+                class="text-gray-600 [text-decoration:none] mx-2"
+              >
+                <img
+                  src="{{ cdnBaseUrl }}images/github.png"
+                  width="24"
+                  height="24"
+                  alt="GitHub"
+                />
+              </a>
+              <a
+                href=" https://www.reddit.com/r/Noto"
+                class="text-gray-600 [text-decoration:none] mx-2"
+              >
+                <img
+                  src="{{ cdnBaseUrl }}images/reddit.png"
+                  width="24"
+                  height="24"
+                  alt="Reddit"
+                />
+              </a>
+              <a
+                href=" https://twitter.com/Noto"
+                class="[text-decoration:none] mx-2"
+              >
+                <img
+                  src="{{ cdnBaseUrl }}images/twitter.png"
+                  width="24"
+                  height="24"
+                  alt="Twitter"
+                />
+              </a>
+              <a
+                href=" https://www.youtube.com/@Noto"
+                class="text-gray-600 [text-decoration:none] mx-2"
+              >
+                <img
+                  src="{{ cdnBaseUrl }}images/youtube.png"
+                  width="24"
+                  height="24"
+                  alt="YouTube"
+                />
+              </a>
+            </p>
+
+            <p
+              class="m-0"
+              style="
+                color: var(--Text-secondary, #6f748c);
+                font-size: 12px;
+                font-family:
+                  SF Pro Text,
+                  Arial,
+                  sans-serif;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0.1px;
+                word-wrap: break-word;
+              "
+            >
+              Copyright © 2025, Noto Inc.
+            </p>
+            <p
+              class="m-0"
+              style="
+                color: var(--Text-secondary, #6f748c);
+                font-size: 12px;
+                font-family:
+                  SF Pro Text,
+                  Arial,
+                  sans-serif;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0.1px;
+                word-wrap: break-word;
+              "
+            >
+              Need Help?
+              <a
+                href="mailto:support@Noto.io"
+                style="
+                  color: var(--Text-secondary, #6f748c);
+                  font-size: 12px;
+                  font-family:
+                    SF Pro Text,
+                    Arial,
+                    sans-serif;
+                  font-weight: 400;
+                  text-decoration: underline;
+                "
+              >
+                support@Noto.io
+              </a>
+            </p>
+            <!-- Transparent timestamp to prevent email collapse -->
+            <span
+              style="
+                color: transparent;
+                font-size: 1px;
+                line-height: 1px;
+                display: block;
+              "
+            >
+              {{ timestamp }}
+            </span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</x-main>

@@ -1,0 +1,165 @@
+<!-- prettier-ignore -->
+{% extends "layouts/base.html" %}
+
+<!-- prettier-ignore -->
+{% block title %} Noto Cloud Login {% endblock %}
+
+<!-- prettier-ignore -->
+{% block head %}
+<link href="../assets/login.css" rel="stylesheet" />
+<link href="../assets/google/logo.css" rel="stylesheet" />
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
+<div id="login-parent">
+  <div id="login-signin">
+    <div id="login-splash">
+      {% include "../assets/logo.html" %}
+      <h2 style="padding: 16px">Noto Cloud</h2>
+    </div>
+
+    <h3>Email Login</h3>
+    <form>
+      <table style="width: 100%">
+        {% if let Some(redirect_to) = redirect_to %}
+        <input type="hidden" name="redirect_to" value="{{ redirect_to }}" />
+        {% endif %}
+
+        <tr>
+          <td>Email</td>
+          <td>
+            <input
+              class="input"
+              style="width: 100%"
+              type="text"
+              id="email"
+              name="email"
+              placeholder="user@example.com"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Password &nbsp</td>
+          <td>
+            <input
+              class="input"
+              style="width: 100%"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="********(optional)"
+            />
+          </td>
+        </tr>
+      </table>
+
+      <small style="color: #888"
+        ><i>
+          (Magic link will be sent to email if password is not provided)
+        </i></small
+      >
+      <div style="display: flex; margin: 8px 0px">
+        <button
+          hx-post="../web-api/signin"
+          hx-target="#none"
+          class="button cyan"
+          type="submit"
+          style="width: 100%; padding: 8px 8px"
+        >
+          Sign In
+        </button>
+        <button
+          hx-post="../web-api/signup"
+          hx-target="#none"
+          class="button purple"
+          type="submit"
+          style="width: 100%; padding: 8px 8px; color: white"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+
+    <!-- Load OAuth Providers if configured -->
+    {% if oauth_providers.len() > 0 %}
+    <br />
+    <table style="width: 100%; border-collapse: collapse">
+      <tr style="display: flex; align-items: center">
+        <td style="width: 100%; margin: auto">
+          <hr class="divider" />
+        </td>
+        <td style="flex: 1; text-align: center">&nbsp;or&nbsp;</td>
+        <td style="width: 100%; margin: auto">
+          <hr class="divider" />
+        </td>
+      </tr>
+    </table>
+
+    <h3>OAuth Login</h3>
+    <div id="oauth-container">
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        {% for provider in oauth_providers %}
+        <a
+          href="/gotrue/authorize?provider={{ provider|escape }}&redirect_to={{ oauth_redirect_to|escape }}"
+          style="text-decoration: none; color: inherit"
+        >
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              border: 1px solid #384967;
+              margin: 4px;
+              border-radius: 4px;
+              height: 64px;
+            "
+          >
+            <div>&nbsp&nbsp{{ provider }}</div>
+            <div class="oauth-icon">
+              <div
+                hx-get="../assets/{{ provider|escape }}/logo.html"
+                hx-trigger="load"
+                hx-swap="outerHTML"
+              ></div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <span> &nbsp </span>
+    <div style="max-width: 256px; display: flex; align-items: center">
+      <img
+        src="https://cdn.prod.website-files.com/5c14e387dab576fe667689cf/61e1116779fc0a9bd5bdbcc7_Frame%206.png"
+        alt="kofi"
+        width="32"
+        height="32"
+      />
+      <i>
+        &nbsp Support Noto on <a href="https://ko-fi.com/Noto">Ko-fi</a>
+      </i>
+    </div>
+
+    <span> &nbsp </span>
+    <div style="max-width: 256px">
+      <small style="color: #888; text-align: center"
+        ><i>
+          &nbsp By clicking logging in or signing up, you confirm that you have
+          read, understood, and agreed to Noto's
+          <a href="https://Noto.io/terms">Terms</a> and
+          <a href="https://Noto.io/privacy">Privacy Policy</a>.
+        </i></small
+      >
+    </div>
+  </div>
+  {% endblock %}
+</div>

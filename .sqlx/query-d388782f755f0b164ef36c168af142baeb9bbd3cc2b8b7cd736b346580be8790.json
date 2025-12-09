@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n      SELECT EXISTS (SELECT 1 FROM af_collab WHERE oid = $1 LIMIT 1)\n    ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "exists",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      null
+    ]
+  },
+  "hash": "d388782f755f0b164ef36c168af142baeb9bbd3cc2b8b7cd736b346580be8790"
+}

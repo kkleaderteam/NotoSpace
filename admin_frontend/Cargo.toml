@@ -1,0 +1,40 @@
+[package]
+name = "admin_frontend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# local dependencies
+gotrue = { path = "../libs/gotrue" }
+gotrue-entity = { path = "../libs/gotrue-entity" }
+database-entity = { path = "../libs/database-entity" }
+shared-entity = { path = "../libs/shared-entity" }
+
+anyhow.workspace = true
+axum = { version = "0.7", features = ["json"] }
+tokio = { version = "1.36", features = ["rt-multi-thread", "macros"] }
+askama = "0.12"
+axum-extra = { version = "0.9", features = ["cookie"] }
+serde.workspace = true
+serde_json.workspace = true
+redis = { version = "0.25.2", features = [
+  "aio",
+  "tokio-comp",
+  "connection-manager",
+] }
+uuid = { workspace = true, features = ["v4"] }
+dotenvy = "0.15"
+reqwest.workspace = true
+tower-service = "0.3"
+tower-http = { version = "0.5", features = ["fs"] }
+tower = "0.4"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+jwt = "0.16"
+human_bytes = "0.4.3"
+rand = "0.8.5"
+sha2 = "0.10.8"
+base64 = "0.22.1"
+urlencoding = "2.1.3"
